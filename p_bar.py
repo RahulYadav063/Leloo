@@ -97,7 +97,7 @@ async def progress_bar(current, total, reply, start):
             progress_bar = "▰" * completed_length + "▱" * remaining_length
             
             try:
-                await reply.edit(f'`╔═ ◣━━━🄿🅁🄰🄳🄷🄰🄽 🄹🄸━━━◢\n'
+                await reply.edit(f'`╔═ 🄿🅁🄰🄳🄷🄰🄽 🄹🄸 ═\n'
                                  f'║ {progress_bar} \n'
                                  f'║ 𝙋𝙧𝙤𝙜𝙧𝙚𝙨𝙨 ⏳- {perc} \n'
                                  f'║ 𝙎𝙥𝙚𝙚𝙙 ⚡ - {sp} \n'
