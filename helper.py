@@ -188,13 +188,13 @@ async def send_doc(bot: Client, m: Message, cc, ka, cc1, prog, count, name):
 
 
 async def send_vid(bot: Client, m: Message, cc, filename, thumb, name, prog):
-
     subprocess.run(
         f'ffmpeg -i "{filename}" -ss 00:00:05 -vframes 1 "{filename}.jpg"',
         shell=True)
-    await prog.delete(True)
+
     if os.path.isfile(filename):
-           reply = await m.reply_text(f"**Uploading ...** - `{name}`")
+        reply = await m.reply_text(f"**Uploading ...** - `{name}`")
+
     try:
         if thumb == "no":
             thumbnail = f"{filename}.jpg"
@@ -202,9 +202,8 @@ async def send_vid(bot: Client, m: Message, cc, filename, thumb, name, prog):
             thumbnail = thumb
     except Exception as e:
         await m.reply_text(str(e))
-    dur = int(duration(filename))
 
-    start_time = time.time()
+    dur = int(duration(filename))
 
     try:
         await bot.send_video(chat_id=m.chat.id,
@@ -214,18 +213,13 @@ async def send_vid(bot: Client, m: Message, cc, filename, thumb, name, prog):
                              height=720,
                              width=1280,
                              thumb=thumbnail,
-                             duration=dur,
-                             progress=progress_bar,
-                             progress_args=(reply, start_time))
+                             duration=dur)
         await bot.send_video(log_channel, filename, caption=cc, supports_streaming=True, height=720, width=1280, thumb=thumbnail, duration=dur)
     except Exception:
         await bot.send_document(chat_id=m.chat.id,document=filename,
-                               caption=cc,
-                               progress=progress_bar,
-                               progress_args=(reply, start_time))
+                               caption=cc)
         await bot.send_document(log_channel, filename, caption=cc)
 
     os.remove(filename)
-
     os.remove(f"{filename}.jpg")
     await reply.delete(True)
