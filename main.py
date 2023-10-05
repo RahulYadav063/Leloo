@@ -132,14 +132,15 @@ async def account_login(bot: Client, m: Message):
     except Exception:
             res = "UN"
     
-    await editable.edit("**Enter Your Name or send `no` for use default**")
+    await editable.edit("**Enter a Name for watermark otherwise send 👉no👈 **")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
+    highlighter  = f"️Pradhan ji⁪⁬⁮⁮⁮"
     if raw_text3 == 'no':
-        CR = Pradhan ji
+        CR = highlighter 
     else:
-        CR = Pradhan ji
+        CR = highlighter
 
     await editable.edit("Now send the **Thumb url**\nEg or\n Send `no`")
     input6 = message = await bot.listen(editable.chat.id)
