@@ -136,10 +136,10 @@ async def account_login(bot: Client, m: Message):
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
-    if raw_text3 == 'de':
+    if raw_text3 == 'no':
         CR = Pradhan ji
     else:
-        CR = raw_text3
+        CR = Pradhan ji
 
     await editable.edit("Now send the **Thumb url**\nEg or\n Send `no`")
     input6 = message = await bot.listen(editable.chat.id)
