@@ -201,9 +201,9 @@ async def send_vid(bot: Client, m: Message, cc, filename, thumb, name):
     dur = int(duration(filename))
 
     try:
-        await m.reply_video(filename, caption=cc, supports_streaming=True, height=720, width=1280, thumb=thumbnail, duration=dur)
+        await m.reply_video(log_channel, filename, caption=cc, supports_streaming=True, height=720, width=1280, thumb=thumbnail, duration=dur)
     except Exception:
-        await m.reply_document(filename, caption=cc)
+        await m.reply_document(log_channel, filename, caption=cc)
 
     os.remove(filename)
     os.remove(f"{filename}.jpg")
